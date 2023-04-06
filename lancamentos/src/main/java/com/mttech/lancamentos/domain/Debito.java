@@ -13,8 +13,4 @@ public class Debito extends Lancamento {
         super.setValor(valor);
     }
 
-    protected void calcularSaldo(Double saldoAtual) {
-        super.setSaldo(saldoAtual - getValor());
-    }
-
 }

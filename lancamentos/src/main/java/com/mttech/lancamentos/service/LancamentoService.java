@@ -31,7 +31,7 @@ public class LancamentoService {
 
     public LancamentoDto lancarCredito(LancamentoDto dto) throws Exception {
 
-        Credito credito = lancamentoImplement.lancarCredito(dto.getDescricao(), dto.getValor(), getSaldoAtual());
+        Credito credito = lancamentoImplement.lancarCredito(dto.getDescricao(), dto.getValor(), buscarSaldoAtual());
 
         LancamentoEntity entity = lancamentoRepository.save(
                 LancamentoEntity.builder()
@@ -42,14 +42,14 @@ public class LancamentoService {
                         .dataHora(credito.getDataHora())
                         .build());
 
-        updateSaldoAtual(credito.getSaldo());
+        atualizarSaldoAtual(credito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
 
     public LancamentoDto lancarDebito(LancamentoDto dto) throws Exception {
 
-        Debito debito = lancamentoImplement.lancarDebito(dto.getDescricao(), dto.getValor(), getSaldoAtual());
+        Debito debito = lancamentoImplement.lancarDebito(dto.getDescricao(), dto.getValor(), buscarSaldoAtual());
 
         LancamentoEntity entity = lancamentoRepository.save(
                 LancamentoEntity.builder()
@@ -60,29 +60,28 @@ public class LancamentoService {
                         .dataHora(debito.getDataHora())
                         .build());
 
-        updateSaldoAtual(debito.getSaldo());
+        atualizarSaldoAtual(debito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
 
-    private Double getSaldoAtual() {
+    private Double buscarSaldoAtual() {
         Optional<SaldoAtualEntity> result = saldoAtualRepository.findById(1L);
-        if (result.isPresent()) {
-
-            return result.get().getSaldo();
-        }
-
-        saldoAtualRepository.save(
-                SaldoAtualEntity.builder()
-                        .saldo(0.0)
-                        .dataUpdate(Instant.now())
-                        .build());
-
-        return 0.0;
-
+        if (!result.isPresent())
+            return inicializarSaldoAtual(0.0);
+        return result.get().getSaldo();
     }
 
-    private void updateSaldoAtual(Double saldoAtual) {
+    private Double inicializarSaldoAtual(Double valorInicial) {
+        saldoAtualRepository.save(
+                SaldoAtualEntity.builder()
+                        .saldo(valorInicial)
+                        .dataUpdate(Instant.now())
+                        .build());
+        return valorInicial;
+    }
+
+    private void atualizarSaldoAtual(Double saldoAtual) {
         saldoAtualRepository.save(
                 SaldoAtualEntity.builder()
                         .id(1L)

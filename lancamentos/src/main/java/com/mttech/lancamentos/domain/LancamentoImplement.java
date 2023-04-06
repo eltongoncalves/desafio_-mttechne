@@ -9,8 +9,8 @@ public class LancamentoImplement implements LancamentoInterface {
     public Credito lancarCredito(String descricao, Double valor, Double saldoAtual) throws Exception {
         Credito credito = new Credito();
         credito.setDescricao(descricao);
-        credito.setValor(valor);
-        credito.calcularSaldo(saldoAtual);      
+        credito.setValor(valor);     
+        credito.setSaldo(saldoAtual + valor);
         return credito;
     }
 
@@ -18,8 +18,8 @@ public class LancamentoImplement implements LancamentoInterface {
     public Debito lancarDebito(String descricao, Double valor, Double saldoAtual) throws Exception {
         Debito debito = new Debito();
         debito.setDescricao(descricao);
-        debito.setValor(valor);
-        debito.calcularSaldo(saldoAtual);
+        debito.setValor(valor);     
+        debito.setSaldo(saldoAtual - valor);
         return debito;
     }
     
