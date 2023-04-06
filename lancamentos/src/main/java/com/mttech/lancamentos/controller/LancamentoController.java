@@ -5,21 +5,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.mttech.lancamentos.controller.dto.CreditoDto;
-import com.mttech.lancamentos.service.LancamentoCreditoService;
+import com.mttech.lancamentos.controller.dto.LancamentoDto;
+import com.mttech.lancamentos.service.LancamentoService;
 
 @RestController
 @RequestMapping("/lancamento")
 public class LancamentoController {
 
     @Autowired
-    private LancamentoCreditoService lancamentoCreditoService;
+    private LancamentoService lancamentoService;
 
     @PostMapping("/credito") 
-    public CreditoDto credito( @RequestBody CreditoDto dto) throws Exception{
+    public LancamentoDto credito( @RequestBody LancamentoDto dto) throws Exception{
+        return lancamentoService.lancarCredito(dto);
+    }
 
-        return lancamentoCreditoService.lancarCredito(dto);
+    @PostMapping("/debito") 
+    public LancamentoDto debito( @RequestBody LancamentoDto dto) throws Exception{
+        return lancamentoService.lancarDebito(dto);
     }
     
 }
