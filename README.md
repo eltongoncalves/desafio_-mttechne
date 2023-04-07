@@ -1,5 +1,9 @@
 # desafio_-mttechne
 
+## Arquitetura proposta 
+
+(https://i.postimg.cc/c1PrPLsK/IMG-0860.jpg)
+
 ## Gerar imagem docker
 
 Para gerar a imagem docker da api, execute:
