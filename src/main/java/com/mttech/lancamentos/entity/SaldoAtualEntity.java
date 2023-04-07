@@ -1,4 +1,4 @@
-package com.mttech.lancamentos.repository.entity;
+package com.mttech.lancamentos.entity;
 
 import java.time.Instant;
 import jakarta.persistence.Entity;

@@ -7,8 +7,8 @@ import com.mttech.lancamentos.controller.mapper.LancamentoMapper;
 import com.mttech.lancamentos.domain.Credito;
 import com.mttech.lancamentos.domain.Debito;
 import com.mttech.lancamentos.domain.LancamentoImplement;
+import com.mttech.lancamentos.entity.LancamentoEntity;
 import com.mttech.lancamentos.repository.LancamentoRepository;
-import com.mttech.lancamentos.repository.entity.LancamentoEntity;
 
 @Service
 public class LancamentoService {

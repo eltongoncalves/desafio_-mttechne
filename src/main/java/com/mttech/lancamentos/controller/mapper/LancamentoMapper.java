@@ -1,7 +1,7 @@
 package com.mttech.lancamentos.controller.mapper;
 
 import com.mttech.lancamentos.controller.dto.LancamentoDto;
-import com.mttech.lancamentos.repository.entity.LancamentoEntity;
+import com.mttech.lancamentos.entity.LancamentoEntity;
 
 public class LancamentoMapper {
 
