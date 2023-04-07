@@ -2,7 +2,7 @@
 
 ## Arquitetura proposta 
 
-(https://i.postimg.cc/c1PrPLsK/IMG-0860.jpg)
+https://i.postimg.cc/c1PrPLsK/IMG-0860.jpg
 
 ## Gerar imagem docker
 
