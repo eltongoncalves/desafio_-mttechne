@@ -216,3 +216,27 @@ Para gerar o relatório diário consolidado
             }
         ]
     }
+
+## Deploy api utilizando terraform para AWS
+
+Para realizar deploy na AWS utilizando o terraform. Entra na pasta terraform que está na raiz do projeto, estão provisionado os recursos para criar o recursos na AWS. 
+
+OBS: Antes as variaves do projeto precisam ser revisadas
+
+Para inicializar o projeto terraform, execute comando: 
+
+    terraform init 
+
+Para planejar os recurso no terraform, execute comando: 
+
+    terraform plan
+
+Para criar os recurso planejados, execute comando: 
+
+    terraform apply
+
+Escolha a opcão: Yes 
+
+
+
+
