@@ -3,7 +3,7 @@ package com.mttech.lancamentos.domain;
 public class Credito extends Lancamento {
 
     Credito() {
-        setTipo("C");
+        setTipo(TipoLancamentoEnum.CREDITO.toString());
     }
 
     @Override

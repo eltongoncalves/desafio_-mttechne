@@ -1,7 +1,5 @@
 package com.mttech.lancamentos.service;
 
-import java.time.Instant;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mttech.lancamentos.controller.dto.LancamentoDto;
@@ -10,18 +8,16 @@ import com.mttech.lancamentos.domain.Credito;
 import com.mttech.lancamentos.domain.Debito;
 import com.mttech.lancamentos.domain.LancamentoImplement;
 import com.mttech.lancamentos.repository.LancamentoRepository;
-import com.mttech.lancamentos.repository.SaldoAtualRepository;
 import com.mttech.lancamentos.repository.entity.LancamentoEntity;
-import com.mttech.lancamentos.repository.entity.SaldoAtualEntity;
 
 @Service
 public class LancamentoService {
 
     @Autowired
-    private SaldoAtualRepository saldoAtualRepository;
+    private LancamentoRepository lancamentoRepository;
 
     @Autowired
-    private LancamentoRepository lancamentoRepository;
+    private SaldoService relatorioService;
 
     private final LancamentoImplement lancamentoImplement;
 
@@ -31,7 +27,7 @@ public class LancamentoService {
 
     public LancamentoDto lancarCredito(LancamentoDto dto) throws Exception {
 
-        Credito credito = lancamentoImplement.lancarCredito(dto.getDescricao(), dto.getValor(), buscarSaldoAtual());
+        Credito credito = lancamentoImplement.lancarCredito(dto.getDescricao(), dto.getValor(), relatorioService.buscarSaldoAtual());
 
         LancamentoEntity entity = lancamentoRepository.save(
                 LancamentoEntity.builder()
@@ -42,14 +38,14 @@ public class LancamentoService {
                         .dataHora(credito.getDataHora())
                         .build());
 
-        atualizarSaldoAtual(credito.getSaldo());
+                        relatorioService.atualizarSaldoAtual(credito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
 
     public LancamentoDto lancarDebito(LancamentoDto dto) throws Exception {
 
-        Debito debito = lancamentoImplement.lancarDebito(dto.getDescricao(), dto.getValor(), buscarSaldoAtual());
+        Debito debito = lancamentoImplement.lancarDebito(dto.getDescricao(), dto.getValor(), relatorioService.buscarSaldoAtual());
 
         LancamentoEntity entity = lancamentoRepository.save(
                 LancamentoEntity.builder()
@@ -60,34 +56,12 @@ public class LancamentoService {
                         .dataHora(debito.getDataHora())
                         .build());
 
-        atualizarSaldoAtual(debito.getSaldo());
+                        relatorioService.atualizarSaldoAtual(debito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
+   
 
-    private Double buscarSaldoAtual() {
-        Optional<SaldoAtualEntity> result = saldoAtualRepository.findById(1L);
-        if (!result.isPresent())
-            return inicializarSaldoAtual(0.0);
-        return result.get().getSaldo();
-    }
-
-    private Double inicializarSaldoAtual(Double valorInicial) {
-        saldoAtualRepository.save(
-                SaldoAtualEntity.builder()
-                        .saldo(valorInicial)
-                        .dataUpdate(Instant.now())
-                        .build());
-        return valorInicial;
-    }
-
-    private void atualizarSaldoAtual(Double saldoAtual) {
-        saldoAtualRepository.save(
-                SaldoAtualEntity.builder()
-                        .id(1L)
-                        .saldo(saldoAtual)
-                        .dataUpdate(Instant.now())
-                        .build());
-    }
+    
 
 }

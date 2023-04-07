@@ -3,7 +3,7 @@ package com.mttech.lancamentos.domain;
 public class Debito extends Lancamento {
 
     Debito() {
-        setTipo("D");
+        setTipo(TipoLancamentoEnum.DEBITO.toString());
     }
 
     @Override
