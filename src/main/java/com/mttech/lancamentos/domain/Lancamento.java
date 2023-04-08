@@ -14,14 +14,14 @@ public class Lancamento {
         setDataHora(Instant.now());
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
     public void setDescricao(String descricao) throws Exception {
         if (descricao == "" || descricao == null)
             throw new IllegalArgumentException("A descricão é obrigatório");
         this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public Instant getDataHora() {
@@ -40,12 +40,12 @@ public class Lancamento {
         this.tipo = tipo;
     }
 
-    public void setValor(Double valor) throws Exception {
-        this.valor = valor;
-    }
-
     public Double getValor() {
         return valor;
+    }
+
+    public void setValor(Double valor) throws Exception {
+        this.valor = valor;
     }
 
     public Double getSaldo() {
@@ -56,6 +56,5 @@ public class Lancamento {
         this.saldo = saldo;
     }
 
-    
 
 }

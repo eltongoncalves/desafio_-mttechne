@@ -1,6 +1,6 @@
 # desafio_mttechne
 
-## Arquitetura proposta 
+## Arquitetura proposta
 
 ![arquitetura.jpeg](docs%2Farquitetura.jpeg)
 
@@ -14,16 +14,15 @@ Esse comando é necessário para criar a imagem principal do projeto
 
 ## Usar docker composer para inicializar os servicos
 
-Para que iniciar a api adequadamente é necessário ter os servicos: Mysql e PhpMyAdmin 
+Para que iniciar a api adequadamente é necessário ter os servicos: Mysql e PhpMyAdmin
 
 Para inicializar os servicos e a API lancamento, execute:
 
     docker-compose up --build
 
+## Testar os servicos utilizando o postman
 
-## Testar os servicos utilizando o postman 
-
-Para realizar o lancamento de crédito 
+Para realizar o lancamento de crédito
 
     curl --location 'localhost:8080/lancamento/credito' \
     --header 'Content-Type: application/json' \
@@ -42,9 +41,8 @@ Para realizar o lancamento de crédito
         "dataHora": "2023-04-07T07:11:50.091066944Z"
     }
 
-Para realizar o lancamento de débito 
+Para realizar o lancamento de débito
 
-   
     curl --location 'localhost:8080/lancamento/debito' \
     --header 'Content-Type: application/json' \
     --data '{
@@ -62,8 +60,7 @@ Para realizar o lancamento de débito
             "dataHora": "2023-04-07T07:10:27.864819308Z"
      }      
 
-
-Para gerar o relatório diário consolidado 
+Para gerar o relatório diário consolidado
 
     curl --location 'localhost:8080/relatorio/saldo/2023-04-07 '
 
@@ -223,19 +220,20 @@ Para gerar o relatório diário consolidado
 
 ## Deploy api utilizando terraform para AWS
 
-Para realizar deploy na AWS utilizando o terraform. Entra na pasta terraform que está na raiz do projeto, estão provisionado os recursos para criar o recursos na AWS. 
+Para realizar deploy na AWS utilizando o terraform. Entra na pasta terraform que está na raiz do projeto, estão
+provisionado os recursos para criar o recursos na AWS.
 
 OBS: Antes as variaves do projeto precisam ser revisadas
 
-Para inicializar o projeto terraform, execute comando: 
+Para inicializar o projeto terraform, execute comando:
 
     terraform init 
 
-Para planejar os recurso no terraform, execute comando: 
+Para planejar os recurso no terraform, execute comando:
 
     terraform plan
 
-Para criar os recurso planejados, execute comando: 
+Para criar os recurso planejados, execute comando:
 
     terraform apply
 

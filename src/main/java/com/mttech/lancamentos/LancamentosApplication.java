@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.mttech.lancamentos.repository")
 public class LancamentosApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LancamentosApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LancamentosApplication.class, args);
+    }
 
 }

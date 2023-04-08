@@ -1,7 +1,5 @@
 package com.mttech.lancamentos.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.mttech.lancamentos.controller.dto.LancamentoDto;
 import com.mttech.lancamentos.controller.mapper.LancamentoMapper;
 import com.mttech.lancamentos.domain.Credito;
@@ -9,17 +7,17 @@ import com.mttech.lancamentos.domain.Debito;
 import com.mttech.lancamentos.domain.LancamentoImplement;
 import com.mttech.lancamentos.entity.LancamentoEntity;
 import com.mttech.lancamentos.repository.LancamentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class LancamentoService {
 
+    private final LancamentoImplement lancamentoImplement;
     @Autowired
     private LancamentoRepository lancamentoRepository;
-
     @Autowired
     private SaldoService relatorioService;
-
-    private final LancamentoImplement lancamentoImplement;
 
     LancamentoService(LancamentoImplement lancamentoImplement) {
         this.lancamentoImplement = lancamentoImplement;
@@ -38,7 +36,7 @@ public class LancamentoService {
                         .dataHora(credito.getDataHora())
                         .build());
 
-                        relatorioService.atualizarSaldoAtual(credito.getSaldo());
+        relatorioService.atualizarSaldoAtual(credito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
@@ -56,12 +54,10 @@ public class LancamentoService {
                         .dataHora(debito.getDataHora())
                         .build());
 
-                        relatorioService.atualizarSaldoAtual(debito.getSaldo());
+        relatorioService.atualizarSaldoAtual(debito.getSaldo());
 
         return LancamentoMapper.toMap(entity);
     }
-   
 
-    
 
 }

@@ -7,13 +7,13 @@ public class LancamentoMapper {
 
     public static LancamentoDto toMap(LancamentoEntity entity) {
         return LancamentoDto.builder()
-        .id(entity.getId())
-        .descricao(entity.getDescricao())
-        .valor(entity.getValor())
-        .tipo(entity.getTipo())
-        .dataHora(entity.getDataHora())
-        .saldo(entity.getSaldo())
-        .build();
+                .id(entity.getId())
+                .descricao(entity.getDescricao())
+                .valor(entity.getValor())
+                .tipo(entity.getTipo())
+                .dataHora(entity.getDataHora())
+                .saldo(entity.getSaldo())
+                .build();
     }
-    
+
 }

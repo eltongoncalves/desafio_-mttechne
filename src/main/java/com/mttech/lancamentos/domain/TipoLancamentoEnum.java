@@ -7,7 +7,7 @@ public enum TipoLancamentoEnum {
             return "C";
         }
     },
-  
+
     DEBITO {
         public String toString() {
             return "D";

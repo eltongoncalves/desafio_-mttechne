@@ -1,11 +1,5 @@
 package com.mttech.lancamentos.service;
 
-import java.time.Instant;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.mttech.lancamentos.controller.dto.LancamentoDto;
 import com.mttech.lancamentos.controller.dto.SaldoDiarioConsolidadoDto;
 import com.mttech.lancamentos.controller.mapper.LancamentoMapper;
@@ -14,6 +8,13 @@ import com.mttech.lancamentos.entity.LancamentoEntity;
 import com.mttech.lancamentos.entity.SaldoAtualEntity;
 import com.mttech.lancamentos.repository.LancamentoRepository;
 import com.mttech.lancamentos.repository.SaldoAtualRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SaldoService {
