@@ -8,7 +8,7 @@ https://i.postimg.cc/c1PrPLsK/IMG-0860.jpg
 
 Para gerar a imagem docker da api, execute:
 
-    docker build -d apilancamento .
+    docker build -t apilancamento .
 
 Esse comando é necessário para criar a imagem principal do projeto
 
@@ -18,7 +18,7 @@ Para que iniciar a api adequadamente é necessário ter os servicos: Mysql e Php
 
 Para inicializar os servicos e a API lancamento, execute:
 
-    docker-compose up --buld 
+    docker-compose up --build
 
 
 ## Testar os servicos utilizando o postman 
